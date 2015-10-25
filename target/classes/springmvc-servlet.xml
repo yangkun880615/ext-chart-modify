@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd http://www.springframework.org/schema/tx
+	 http://www.springframework.org/schema/tx/spring-tx.xsd "
+	default-lazy-init="true">
+	<!--使Spring支持自动检测组件，如注解的Controller -->
+	<context:component-scan base-package="com.chart.cn" />
+       <mvc:default-servlet-handler/>
+       <mvc:annotation-driven/>
+
+	<!-- 使用注解方式定义事务 -->
+	<tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager" />
+
+
+    <!-- json转换器 -->
+    <bean id="mappingJacksonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+	<!-- 拦截器, 多个拦截器,顺序执行 , 如果不配置或/*,将拦截所有的Controller -->
+		<mvc:interceptors>
+		      <!-- session超时 -->  
+      <mvc:interceptor>  
+        <mvc:mapping path="/**"/>  
+        <bean  class="com.chart.cn.web.Interceptor.SessionTimeoutInterceptor">  
+          <property name="allowUrls">  
+            <list>  
+              <!-- 如果请求中包含以下路径，则不进行拦截 -->  
+              <value>/login</value>  
+              <value>/js</value>  
+              <value>/css</value>  
+              <value>/image</value>  
+              <value>/images</value>  
+            </list>  
+          </property>  
+        </bean>  
+      </mvc:interceptor>  
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="org.springframework.orm.hibernate3.support.OpenSessionInViewInterceptor">
+				<property name="sessionFactory">
+					<ref bean="sessionFactory" />
+				</property>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+		    <!-- 自定义异常处理，SimpleMappingExceptionResolver这个类可以是个空类，但是要写，方便在java代码里面使用 -->  
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+      <property name="exceptionMappings">  
+        <props>  
+          <prop key="com.chart.cn.exception.SessionTimeoutException">redirect:/login</prop> 
+        </props>  
+      </property>  
+    </bean> 
+
+	<!-- 对静态资源的访问 使用容器 Tomcat的defaultServlet，web.xml写在DispatcherServlet -->
+	<mvc:default-servlet-handler />
+
+	<!-- jsp视图配置 -->
+	<bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="order" value="3" />
+		<!--处理顺序 -->
+		<property name="prefix" value="/WEB-INF/Template/" />
+		<!--前缀 -->
+		<property name="suffix" value=".jsp" />
+		<!--后缀 -->
+	</bean>
+
+	<bean id="freemarkerResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="order" value="2" />
+		<!--处理顺序 -->
+		<property name="prefix" value="" />
+		<!--前缀 -->
+		<property name="suffix" value=".ftl" />
+		<!--后缀 -->
+		<property name="contentType" value="text/html;charset=utf-8" />
+		<!--编码 -->
+		<property name="viewClass">
+			<value>
+				org.springframework.web.servlet.view.freemarker.FreeMarkerView
+			</value>
+		</property>
+		<!-- freemarker模板文件中可${rc.contextPath}获得程序路径 -->
+		<property name="requestContextAttribute" value="rc"></property>
+	</bean>
+
+	<!-- freemarker配置文件路径 -->
+	<bean id="freemarkerConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location" value="classpath:freemarker.properties" />
+	</bean>
+
+	<!-- freemarker基本配置 -->
+	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="freemarkerSettings" ref="freemarkerConfiguration" />
+		<property name="templateLoaderPath" value="/WEB-INF/Template/" />
+	</bean>
+
+	<!-- 视图配置 -->
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="1" />
+		<!--处理顺序 -->
+		<!-- <property name="ignoreAcceptHeader" value="true" /> <property name="favorParameter" value="true" /> -->
+		<property name="defaultContentType" value="text/html" />
+		<property name="mediaTypes">
+			<map>
+				<entry key="html" value="text/html" />
+				<entry key="json" value="application/json" />
+				<entry key="xml" value="application/xml" />
+				<entry key="excel" value="application/excel" />
+				<entry key="pdf" value="application/pdf" />
+			</map>
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<ref bean="freemarkerResolver" />
+				<ref bean="internalResourceViewResolver" />
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+</beans>

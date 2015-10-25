@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+	default-autowire="byName" default-lazy-init="false">
+	<!--设置需要进行Spring注解扫描的类包 -->
+	<context:component-scan base-package="com.chart.cn">
+	</context:component-scan>
+
+	<!--property配置文件读取，在接下来的配置中可以直接使用${key}来获取配置的值 -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 设置连接数据库的驱动、URL、用户名、密码 连接池最大连接数、最小连接数、初始连接数等参数 -->
+	<!-- 数据源配置 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<!-- 设置JDBC驱动名称 -->
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<!-- 设置JDBC连接URL -->
+		<property name="url" value="${jdbc.url}" />
+		<!-- 设置数据库用户名 -->
+		<property name="username" value="${jdbc.username}" />
+		<!-- 设置数据库密码 -->
+		<property name="password" value="${jdbc.password}" />
+		<!-- 设置连接池初始值 -->
+		<property name="initialSize" value="5" />
+		<!-- 设置连接池最大值 -->
+		<property name="maxActive" value="8" />
+		<!-- 设置连接池最小空闲值 -->
+		<property name="minIdle" value="5" />
+		<!-- 设置连接池最大空闲值 -->
+		<property name="maxIdle" value="5" />
+	</bean>
+
+
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<!-- 配置Hibernate拦截器,自动填充数据的插入、更新时间 -->
+		<!-- property name="entityInterceptor" ref="entityInterceptor" /> -->
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<value>
+			<!-- 寻找支持重连的连接池。 -->
+			     hibernate.autoReconnect=true
+				<!-- 设置数据库方言 -->
+				hibernate.dialect=${hibernate.dialect}
+				<!-- 设置自动创建|更新|验证数据库表结构create：表示启动的时候先drop，再createcreate-drop: 也表示创建，只不过再系统关闭前执行一下dropupdate: 这个操作启动的时候会去检查schema是否一致，如果不一致会做scheme更新validate: 
+					启动时验证现有schema与你配置的hibernate是否一致，如果不一致就抛出异常，并不做更新 -->
+				hibernate.hbm2ddl.auto=none
+				<!-- 输出SQL语句到控制台 -->
+				hibernate.show_sql=${hibernate.show_sql}
+				<!-- 格式化输出到控制台的SQL语句 -->
+				hibernate.format_sql=${hibernate.format_sql}
+				<!-- 是否开启二级缓存 -->
+				hibernate.cache.use_second_level_cache=true
+				<!-- 配置二级缓存产品 hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider -->
+				hibernate.cache.region.factory_class=org.hibernate.cache.EhCacheRegionFactory
+				<!-- 是否开启查询缓存 -->
+				hibernate.cache.use_query_cache=true
+				<!-- Hibernate将收集有助于性能调节的统计数据 -->
+				hibernate.generate_statistics=true
+				<!-- 数据库批量查询数 -->
+				hibernate.jdbc.fetch_size=50
+				<!-- 数据库批量更新数 -->
+				hibernate.jdbc.batch_size=30
+				hibernate.connection.release_mode=after_transaction
+			</value>
+		</property>
+		<property name="packagesToScan">
+		<list>
+			<value>com.chart.cn.entity</value>
+		</list>
+		</property>
+	</bean>
+
+
+	<!-- 使用AspectJ方式配置AOP -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<aop:config proxy-target-class="true" />
+
+
+	<!-- 声明一个 Hibernate 3 的 事务管理器供代理类自动管理事务用 -->
+		<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref ="sessionFactory" />
+		<property name="dataSource"><ref bean="dataSource"/></property>
+	</bean>
+
+	<!--Spring jdbc基于oracle的本地语言实现 -->
+	<bean id="mysqlNativePaginationQuery" class="com.chart.cn.core.pagination.MysqlNativePaginationQuery" />
+
+	<!-- jdbcTemplate定义 -->
+	<bean id="simpleSpringJdbcTemplate" class="com.chart.cn.core.springjdbc.SimpleSpringJdbcTemplate">
+		<constructor-arg index="0" ref="dataSource" />
+		<property name="paginationQueryLanguage" ref="mysqlNativePaginationQuery" />
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" p:dataSource-ref="dataSource" />	
+	
+	<bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+   		<constructor-arg ref="dataSource"></constructor-arg>
+  </bean>
+  <bean id="multipartResolver"  
+       class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+        <!-- set the max upload size100MB -->  
+        <property name="maxUploadSize">  
+            <value>104857600</value>  
+        </property>    
+        <property name="maxInMemorySize">  
+            <value>4096</value>  
+        </property>  
+    </bean>  
+  
+  
+</beans>
