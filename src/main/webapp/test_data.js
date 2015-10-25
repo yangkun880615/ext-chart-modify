@@ -1,0 +1,48 @@
+{
+	total:20,
+	data:[
+		{
+			service_number:"FOX1246G59Q",
+			quick_service_code:"", 
+			device_type:"交换机",
+			device_brand:"Cisco",
+			device_model:"4948",
+			business_type:"业务类型-->>网络设备",
+			host_name:"接入层交换机",
+			host_name:"接入层交换机",
+			mem_info:"",
+			hdd_info:"",
+			ilo_mac:"10.68.0.54",
+			eth0_mac:"10.64.0.55",
+			eth1_mac:"10.66.0.55",
+			idc_node:"西单",
+			cabinet_area:"5F",
+			cabinet_name:"1-1",
+			cabinet_order :1,
+			supervisor:"程明",
+			status:"正常"
+		},
+		{
+			service_number:"FOX123454",
+			quick_service_code:"123", 
+			device_type:"交换机2",
+			device_brand:"Cisco",
+			device_model:"4948",
+			business_type:"业务类型-->>空闲",
+			host_name:"VMWARE",
+			host_name:"VMWARE",
+			mem_info:"32G",
+			hdd_info:"100T",
+			ilo_mac:"10.68.0.54",
+			eth0_mac:"10.64.0.55",
+			eth1_mac:"10.66.0.55",
+			idc_node:"成都",
+			cabinet_area:"6F",
+			cabinet_name:"1-1",
+			cabinet_order :1,
+			supervisor:"程明",
+			status:"新入库"
+		}
+		
+		]
+}

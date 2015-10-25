@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document */
+@import url(common.css);
+
+
+.statistics_nav{width:768px;height:30px;line-height:30px;border:0px solid #B1C8D7;padding:0px;background-color:#EAF1FD;border-bottom-width:0px;overflow:inherit;}
+.statistics_nav a{width:190px;height:30px;line-height:30px;border:1px solid #B1C8D7;padding:0px;background-color:#EAF1FD;text-align:center;vertical-align:middle;float:left;text-decoration:none;}
+.statistics_nav a.current{background-color:#fff;border-bottom:0px;text-decoration:none;}
+.nav a:hover{text-decoration:none;color:#0066aa;}

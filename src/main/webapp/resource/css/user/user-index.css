@@ -1,0 +1,56 @@
+body, div, address, blockquote, iframe, ul, ol, dl, dt, dd,
+h1, h2, h3, h4, h5, h6, p, pre, table, caption, th, td,
+form, legend, fieldset, input, button, select, textarea ,em{
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 12px !important;
+	font-family: inherit;
+}
+.logo 				{
+					    background: url("../../../common/images/logo.png") no-repeat scroll 0 0 transparent;
+					    display: inline;
+					    float: left;
+					    height: 47px;
+					    margin-left: 10px;
+					    margin-top: 12px;
+					    width: 258px;
+					}
+.userInfo 			{
+					    display: inline;
+					    float: right;
+					    font-size:14px;
+					    margin-right: 50px;
+					    margin-top: 20px;
+					    color:#aaa;
+					}
+.northDiv			{
+						background-color: #cfdbec;
+						height:100;
+					}
+
+					a:link { text-decoration: none;color: black}
+
+.header				{
+						layout-flow:horizontal;
+						text-align:center;
+						margin-top: 5px;
+						height:17px;
+						font-size:12px;
+						
+					}
+.ieheader				{
+						layout-flow:horizontal;
+						text-align:right;
+						margin-top: 30px;
+						height:17px;
+						font-size:12px;
+						
+					}
+.file_header 		{background-image: url("../../images/tabicon/file.png")!important;width:75px;}
+.log_header 		{background-image: url("../../images/tabicon/log.png")!important;width:75px;}
+.statistics_header 	{background-image: url("../../images/tabicon/statistics.png")!important;width:75px;}
+.monitor_header 	{background-image: url("../../images/tabicon/monitor.png")!important;width:75px;}
+.config_header 		{background-image: url("../../images/tabicon/config.png")!important;width:75px;}
+.sys_header 		{background-image: url("../../images/tabicon/sys.png")!important;width:75px;}

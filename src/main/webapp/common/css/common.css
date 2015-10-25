@@ -1,0 +1,140 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 全局CSS定义 */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin:0;padding:0;}
+body {font-family:"微软雅黑","宋体","Lucida Grande",Verdana,Lucida,Arial,Helvetica,sans-serif; font-size:12px;line-height:1.5;background-color:#fff; color:#555;}
+td,th,input,textarea,select,button{font-size:12px;}
+h1, h2, h3, h4, h5, h6 {font-weight:bold;}
+h1{font-size:26px;}
+h2{font-size:18px;}
+h3{font-size:14px;}
+img{border:0;}
+hr {background:#ddd;color:#ddd;clear:both;float:none;width:100%;height:.1em;margin:1em 0;border:none;}
+ul{list-style:none;}
+fieldset {border:1px solid #999;padding:20px;padding-top:0px;margin-bottom:20px;clear:both;}
+legend {font-size:15px;padding-left:8px;padding-right:15px;font-size:12px;font-weight:bold;color:#111111;margin-left:-10px;margin-bottom:10px;}
+
+
+/* 链接颜色 */
+a:link {color:#369; text-decoration:none;}
+a:visited {color:#369;text-decoration:none;}
+a:hover {color:#09d; text-decoration:underline;}
+
+
+/* 颜色属性*/
+.black,a.black:link,a.black:visited{color:black;}
+.white,a.white:link,a.white:visited{color:white;}
+.gray,a.gray:link,a.gray:visited{color:#808080;}
+.silver,a.silver:link,a.silver:visited{color:#c0c0c0;}
+.red,a.red:link,a.red:visited{color:#f00;}
+.maroon,a.maroon:link,a.maroon:visited{color:#800000;}
+.lime,a.lime:link,a.lime:visited{color:#0f0;}
+.green,a.green:link,a.green:visited{color:#008000;}
+.blue,a.blue:link,a.blue:visited{color:#00f;}
+.navy,a.navy:link,a.navy:visited{color:#000080;}
+.yellow,a.yellow:link,a.yellow:visited{color:#ff0;}
+.olive,a.olive:link,a.olive:visited{color:#808000;}
+.teal,a.teal:link,a.teal:visited{color:#008080;}
+.fuchsia,a.fuchsia:link,a.fuchsia:visited{color:#f0f;}
+.purple,a.purple:link,a.purple:visited{color:#800080;}
+.orange,a.orange:link,a.orange:visited{color:orange;}
+.cyan,a.cyan:link,a.cyan:visited{color:#04bee6;}
+.magenta,a.magenta:link,a.magenta:visited{color:#f3048b;}
+
+.error, .notice, .success {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
+.error {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
+.notice {background:#FFF6BF;color:#514721;border-color:#FFD324;}
+.success {background:#E6EFC2;color:#264409;border-color:#C6D880;}
+.error a {color:#8a1f11;}
+.notice a {color:#514721;}
+.success a {color:#264409;}
+
+
+/* 字体属性*/
+.bold {font-weight: bold;}
+.italic {font-style: italic;}
+.f12{ font-size:12px;font-weight:normal;}
+.f12b{font-size:12px;font-weight:bold;}
+.f14{ font-size:14px;font-weight:normal;}
+.f14b{font-size:14px;font-weight:bold;}
+.f26{ font-size:26px;font-weight:normal;}
+.f26b{font-size:26px;font-weight:bold;}
+
+
+/*布局属性*/
+.wrap{width:960px;margin:0 auto;}
+.first {margin-left:0;padding-left:0;}
+.last {margin-right:0;padding-right:0;}
+.top {margin-top:0;padding-top:0;}
+.bottom {margin-bottom:0;padding-bottom:0;}
+.pad5{padding:5px;}
+.pad10{padding:10px;}
+.pad20{padding:20px;}
+.pad30{padding:30px;}
+.pad5_10{padding:5px 10px;}
+.pad10_20{padding:10px 20px;}
+.pad20_30{padding:20px 30px;}
+.mt{margin-top:0px;}
+
+
+/*表单属性*/
+input.text, textarea, select {border:1px solid #bbb;}
+input.text:focus, textarea:focus, select:focus {border:1px solid #666;}
+input.text{width:200px;padding:2px;height:20px;}
+select{width:135px;height:20px;}
+textarea {width:300px;height:150px;padding:5px;}
+
+
+/* 其他属性 */
+.fleft{ float: left;border:1px solid #ddd;border-bottom:0px; background-color: #fafafa;height:30px;vertical-align:baseline;padding:5px 6px 0px 5px;}
+.fright{ float: right;}
+.searcher{clear:both;border:1px solid #ddd;border-bottom:0px;padding:5px;background-color: #fafafa;}
+.tleft{text-align:left;}
+.tcenter{text-align:center;}
+.tright{text-align:right;}
+.center{margin:0 auto;}
+.clear{clear: both;}
+.hide{display: none;}
+.noline,.noline a{text-decoration: none;}
+.noborder{border:none;}
+.h0{font-size:0;line-height:0;height:0;}
+.notop{margin-top:0;}
+.omit{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.oneline{width:100%;height:1.5em;line-height:1.5em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.highlight {background:#ff0;}
+.zoom{zoom:1;}
+.verdana{font-family:verdana;}
+img.picture{border:1px solid #ccc;}
+.hr{border-top:1px solid #ccc;margin:8px 0;}
+.hr2{border-top:1px dashed #ccc;margin:8px 0;}
+.space {height:10px;font-size:0;}
+.wrapfloat{overflow:hidden;zoom:1;}
+.clearfix:after{content:"";display:block;height:0;font-size:0;clear:both;visibility:hidden;}
+.clearfix{zoom:1;}
+.relative{position:relative;}
+.divcenter{text-align:center; margin-left:auto;margin-right:auto;}
+.comment{font-style:italic; color:#ccc}
+
+
+
+
+.test{
+    color:#000;          /* Firefox */
+    color:#00f\0;        /* only IE8 */
+    *color:#f00;         /* IE7 */
+    _color:#0f0;         /* IE6 */
+}
+.color{
+	background-color: #CC00FF;    /* Firefox */
+	background-color: #FF0000\9;  /* IE8 */
+	*background-color: #0066FF;   /* IE7 */
+	_background-color: #009933;   /* IE6 */
+}
+
+
+
+
+
+
+

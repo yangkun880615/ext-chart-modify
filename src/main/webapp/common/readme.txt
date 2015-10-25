@@ -1,0 +1,1 @@
+存放公共的js 和css资源  如 jquery ext.js

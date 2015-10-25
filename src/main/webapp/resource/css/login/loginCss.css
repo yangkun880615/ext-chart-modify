@@ -1,0 +1,21 @@
+.loginForm {
+	background-image: url("../../images/login/bj.png");
+	background-color: red;
+}
+
+.unlock {
+	background-image: url("../../images/login/unlock.png") !important;
+	width: 32px !important;
+	height: 32px !important;
+}
+
+.unlockGreen {
+	background-image: url("../../images/login/unlock_green.png") !important;
+	width: 32px !important;
+	height: 32px !important;
+}
+
+.my-icon {
+	background-image: url("../../images/login/bj.png") 0 6px
+		no-repeat !important;
+}
