@@ -1,0 +1,185 @@
+{
+	
+    "text": "ss",
+    "children": [
+        {
+
+            "task": "公司部门",
+            "duration": 13.25,
+            "user": "Tommy Maintz",
+            "iconCls": "task-folder",
+            "expanded": true,
+            "children": [
+                {
+                    "task": "开发部",
+                    "duration": 1.25,
+                    "user": "Tommy Maintz",
+                    "iconCls": "task-folder",
+                     "expanded": true,
+                    "children": [
+                        {
+                            "task": "前台美工",
+                            "duration": 0.25,
+                            "user": "ww",
+                            "leaf": true,
+                            "iconCls": "task"
+                        }, {
+                            "task": "设计部",
+                            "duration": .4,
+                            "user": "架构部",
+                            "leaf": true,
+                            "iconCls": "task",
+                            "done": true
+                        }, {
+                            "task": "需求部门",
+                            "duration": .4,
+                            "user": "Tommy Maintz",
+                            "leaf": true,
+                            "iconCls": "task"
+                        },  {
+                            "task": "测试",
+                            "duration": .4,
+                            "user": "Tommy Maintz",
+                            "leaf": true,
+                            "iconCls": "task"
+                        },{
+                            "task": "维护",
+                            "duration": .2,
+                            "user": "Tommy Maintz",
+                            "leaf": true,
+                            "iconCls": "task"
+                        }
+                    ]
+                }, {
+                    "task": "运营部门",
+                    "duration": 12,
+                    "user": "Tommy Maintz",
+                    "iconCls": "task-folder",
+                    "expanded": true,
+                    "children": [
+                        {
+                            "task": "销售",
+                            "duration": 6.5,
+                            "user": "Tommy Maintz",
+                            "leaf": true,
+                            "iconCls": "task"
+                        }, {
+                            "task": "客服",
+                            "duration": 2.75,
+                            "user": "aa",
+                            "iconCls": "task-folder",
+                            "children": [
+                                {
+                                    "task": "Ceiling",
+                                    "duration": 1.25,
+                                    "user": "Tommy Maintz",
+                                    "iconCls": "task",
+                                    "leaf": true
+                                }, {
+                                    "task": "",
+                                    "duration": 1.5,
+                                    "user": "Tommy Maintz",
+                                    "iconCls": "task",
+                                    "leaf": true
+                                }
+                            ]
+                        }, {
+                            "task": "推广",
+                            "duration": 2.75,
+                            "user": "Tommy Maintz",
+                            "leaf": true,
+                            "iconCls": "task",
+                            "done": true
+                        }
+                    ]
+                }
+            ]
+        }, {
+            "task": "Project: Testing",
+            "duration": 2,
+            "user": "Core Team",
+            "iconCls": "task-folder",
+            "children": [
+                {
+                    "task": "Mac OSX",
+                    "duration": 0.75,
+                    "user": "Tommy Maintz",
+                    "iconCls": "task-folder",
+                    "children": [
+                        {
+                            "task": "FireFox",
+                            "duration": 0.25,
+                            "user": "Tommy Maintz",
+                            "iconCls": "task",
+                            "leaf": true
+                        }, {
+                            "task": "Safari",
+                            "duration": 0.25,
+                            "user": "Tommy Maintz",
+                            "iconCls": "task",
+                            "leaf": true
+                        }, {
+                            "task": "Chrome",
+                            "duration": 0.25,
+                            "user": "Tommy Maintz",
+                            "iconCls": "task",
+                            "leaf": true
+                        }
+                    ]
+                }, {
+                    "task": "Windows",
+                    "duration": 3.75,
+                    "user": "Darrell Meyer",
+                    "iconCls": "task-folder",
+                    "children": [
+                        {
+                            "task": "FireFox",
+                            "duration": 0.25,
+                            "user": "Darrell Meyer",
+                            "iconCls": "task",
+                            "leaf": true
+                        }, {
+                            "task": "Safari",
+                            "duration": 0.25,
+                            "user": "Darrell Meyer",
+                            "iconCls": "task",
+                            "leaf": true
+                        }, {
+                            "task": "Chrome",
+                            "duration": 0.25,
+                            "user": "Darrell Meyer",
+                            "iconCls": "task",
+                            "leaf": true
+                        }, {
+                            "task": "Internet Exploder",
+                            "duration": 3,
+                            "user": "Darrell Meyer",
+                            "iconCls": "task",
+                            "leaf": true
+                        }
+                    ]
+                }, {
+                    "task": "Linux",
+                    "duration": 0.5,
+                    "user": "Aaron Conran",
+                    "iconCls": "task-folder",
+                    "children": [
+                        {
+                            "task": "FireFox",
+                            "duration": 0.25,
+                            "user": "Aaron Conran",
+                            "iconCls": "task",
+                            "leaf": true
+                        }, {
+                            "task": "Chrome",
+                            "duration": 0.25,
+                            "user": "Aaron Conran",
+                            "iconCls": "task",
+                            "leaf": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
