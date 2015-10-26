@@ -1,6 +1,6 @@
 /**  
 * Project ：              ext-chart  
-* FileName ：           com.cntv.cn.web.controller.chart.HelloWorldPlushlet.java 
+* FileName ：           com.chart.cn.web.controller.chart.HelloWorldPlushlet.java 
 * Description : 
 * @author :     yk 
 * @version:     1.0

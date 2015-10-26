@@ -1,6 +1,6 @@
 /**  
-* Project ：              asset-cmp  
-* FileName ：           com.cntv.cn.util.Entity2TreeInter.java 
+* Project ：              ext-chart-modify  
+* FileName ：           com.chart.cn.util.Entity2TreeInter.java 
 * Description：
 * @version:     1.0
 * Create at ：        2014-9-18 上午11:26:57  

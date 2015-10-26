@@ -1,6 +1,6 @@
 /**  
-* Project ：              asset-cmp  
-* FileName ：           com.cntv.cn.dao.sysrole.SysUserDao.java 
+* Project ：              ext-chart-modify  
+* FileName ：           com.chart.cn.dao.sysrole.SysUserDao.java 
 * Description：
 * @version:     1.0
 * Create at ：        2014-9-29 上午11:31:01  

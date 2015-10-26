@@ -1,6 +1,6 @@
 /**  
-* Project ：              asset-cmp  
-* FileName ：           com.cntv.cn.exception.ExceptionHandler.java 
+* Project ：              ext-chart-modify  
+* FileName ：           com.chart.cn.exception.ExceptionHandler.java 
 * Description：
 * @version:     1.0
 * Create at ：        2014-9-15 下午6:09:48  

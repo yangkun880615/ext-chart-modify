@@ -1,6 +1,6 @@
 /**  
-* Project ：              asset-cmp  
-* FileName ：           com.cntv.cn.web.controller.user.UserController.java 
+* Project ：              ext-chart-modify  
+* FileName ：           com.chart.cn.web.controller.user.UserController.java 
 * Description：
 * @version:     1.0
 * Create at ：        2014-9-16 下午1:43:36  

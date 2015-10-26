@@ -6,7 +6,7 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resource"/>
-        <property name="java-output-path" value="/asset-cmp/target/classes"/>
+        <property name="java-output-path" value="/ext-chart-modify/target/classes"/>
         <property name="context-root" value="chart"/>
     </wb-module>
 </project-modules>

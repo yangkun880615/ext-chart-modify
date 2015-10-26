@@ -1,6 +1,6 @@
 /**  
-* Project ：              asset-cmp  
-* FileName ：           com.cntv.cn.web.controller.login.LoginController.java 
+* Project ：              ext-chart-modify  
+* FileName ：           com.chart.cn.web.controller.login.LoginController.java 
 * Description：
 * @version:     1.0
 * Create at ：        2014-9-15 下午10:15:15  

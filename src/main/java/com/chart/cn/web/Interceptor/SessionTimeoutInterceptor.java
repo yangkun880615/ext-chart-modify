@@ -1,6 +1,6 @@
 /**  
-* Project ：              asset-cmp  
-* FileName ：           com.cntv.cn.web.Interceptor.SessionTimeoutInterceptor.java 
+* Project ：              ext-chart-modify  
+* FileName ：           com.chart.cn.web.Interceptor.SessionTimeoutInterceptor.java 
 * Description：
 * @version:     1.0
 * Create at ：        2014-9-19 上午11:18:15  

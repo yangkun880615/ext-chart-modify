@@ -1,6 +1,6 @@
 /**  
-* Project ：              asset-cmp  
-* FileName ：           com.cntv.cn.exception.SessionTimeoutException.java 
+* Project ：              ext-chart-modify  
+* FileName ：           com.chart.cn.exception.SessionTimeoutException.java 
 * Description：
 * @version:     1.0
 * Create at ：        2014-9-19 上午11:21:19  

@@ -1,6 +1,6 @@
 /**  
-* Project ��              asset-cmp  
-* FileName ��           com.cntv.cn.constant.ComonConstant.java 
+* Project ��              ext-chart-modify  
+* FileName ��           com.chart.cn.constant.ComonConstant.java 
 * Description��
 * @version:     1.0
 * Create at ��        2014-9-15 ����3:43:55  

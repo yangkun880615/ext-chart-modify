@@ -1,6 +1,6 @@
 /**  
- * Project ：              asset-cmp  
- * FileName ：           com.cntv.cn.service.sysrole.SysUserServiceImp.java 
+ * Project ：              ext-chart-modify  
+ * FileName ：           com.chart.cn.service.sysrole.SysUserServiceImp.java 
  * Description：
  * @version:     1.0
  * Create at ：        2014-9-29 下午2:35:10  

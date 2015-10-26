@@ -156,7 +156,7 @@ Ext.onReady(function() {
 							height : 50,
 							region : "south",
 							layout : "absolute",
-							html : "<div align=center style='line-height:20px;margin-top:8px;'>如果您帐号有问题，请与<a href='mailto:opsadmin@cntv.cn' style='color: black;text-decoration: none;'>技术中心</a>联系。<br/>powered by 平台开发部</div>"
+							html : "<div align=center style='line-height:20px;margin-top:8px;'>如果您帐号有问题，请与<a href='mailto:opsadmin@chart.cn' style='color: black;text-decoration: none;'>技术中心</a>联系。<br/>powered by 平台开发部</div>"
 						}]
 			});
 
