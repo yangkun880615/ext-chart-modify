@@ -1,6 +1,6 @@
 /**  
-* Project ：              asset-cmp  
-* FileName ：           com.cntv.cn.core.dao.a.java 
+* Project ：              ext-chart-modify  
+* FileName ：           com.chart.cn.core.dao.BusinessException.java 
 * Description：
 * @version:     1.0
 * Create at ：        2014-9-15 下午6:13:46  
