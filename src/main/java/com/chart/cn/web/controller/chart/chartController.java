@@ -4,10 +4,17 @@ package com.chart.cn.web.controller.chart;
 
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
+
+
 
 
 
@@ -39,6 +46,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.chart.cn.core.SysUserThread;
 import com.chart.cn.entity.resconfig.SysUser;
+import com.chart.cn.service.resconfig.sysuser.SysUserService;
 
 import nl.justobjects.pushlet.core.Protocol;;
 
@@ -46,6 +54,10 @@ import nl.justobjects.pushlet.core.Protocol;;
 @RequestMapping("chart")
 public class chartController  {
 
+	
+	@Resource
+	private SysUserService sysUserService;
+	
 	@RequestMapping(value = "")
 	@ResponseBody
 	public int index(String message,String userId,String userName,HttpServletRequest request,HttpServletResponse response,
@@ -117,6 +129,59 @@ public class chartController  {
 				return 0;//聊天的用户未登陆
 			}
 		}
+		return -1;//聊天信息为空
+		
+	}
+	
+	
+	@RequestMapping(value = "notice-friends")
+	@ResponseBody
+	public int noticeFriends(String message,Integer loginId,HttpServletRequest request,HttpServletResponse response,
+			ModelMap model) throws UnsupportedEncodingException {
+		String msg=message;
+		SessionManager sessionManage =SessionManager.getInstance();
+		int a= sessionManage.getSessionCount();
+		Session []  sessionArray = sessionManage.getSessions();
+		for(Session s : sessionArray){
+			System.out.println(s.getId()+"session");
+		}
+		System.out.println(a);
+		if(!"".equals(msg)){
+//			SessionManager.getInstance().stop();
+			 if(SessionManager.getInstance().hasSession(String.valueOf(loginId))){
+			Event event=Event.createDataEvent("/notice/friends");
+		
+			SysUser userInfo = (SysUser)request.getSession().getAttribute("user");
+			if(userInfo != null && loginId!=null){
+				SysUser loginSysUser = sysUserService.get(loginId);
+				event.setField("message",new String("你的好友"+loginSysUser.getUserName()+"上线了"));
+				event.setField("from",new String(loginSysUser.getUserName().getBytes("utf-8"),"iso-8859-1"));
+				event.setField("fromId",loginSysUser.getId());
+				event.setField(Protocol.P_SUBJECT, "noticeFriendsOnline");
+			}
+			Dispatcher.getInstance().multicast(event);//群发
+//			Dispatcher.getInstance().unicast(event, userId);//点对点发 向id=2 的用户发送消息
+
+			return 1;//用户登陆状态
+			}else{
+				return 0;//聊天的用户未登陆
+			}
+		}
+		return -1;//聊天信息为空
+		
+	}
+	
+	@RequestMapping(value = "is-friends")
+	@ResponseBody
+	public int isFriends(String message,Integer fromId,HttpServletRequest request,HttpServletResponse response,
+			ModelMap model) throws UnsupportedEncodingException {
+			 if(SessionManager.getInstance().hasSession(String.valueOf(fromId))){
+			SysUser userInfo = (SysUser)request.getSession().getAttribute("user");
+			if(userInfo != null && fromId != null && fromId!=userInfo.getId()){
+//				SysUser loginSysUser = sysUserService.queryFriends(fromId,userInfo.getId());
+				return 1;//是我的好友
+				}
+			}
 		return -1;//聊天信息为空
 		
 	}

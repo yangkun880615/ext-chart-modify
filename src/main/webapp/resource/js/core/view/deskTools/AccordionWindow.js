@@ -84,7 +84,9 @@ Ext.define('core.view.deskTools.AccordionWindow', {
 					
 										
                	},
-                	
+                itemclick:function( me, record, item, index, e, eOpts ) {
+                	me.fireEvent("itemdblclick",me,record, item, index, e, eOpts);
+                },	
                 itemdblclick :function( me, record, item, index, e, eOpts ){
                 	if(record.data.iconCls=='user'||record.data.iconCls=='user-girl'||record.data.iconCls=='user-kid'){
                 	//弹出聊天对话框
@@ -502,12 +504,11 @@ function chartDialogShow(id,name){
 }
 
 function onData(event) {
-	console.log(event);
 	console.log(event.getEvent()+event.getSubject());
 	if(event.getSubject() == "singleChart"){
 		  var chartDialog=Ext.ComponentQuery.query('[name=chat_dialog'+event.get("fromId")+']')[0];
 	     if(!chartDialog){//判断是否存在聊天的窗体，不存在就弹出聊天窗体
-	    	 chartDialogShow(event.get("fromId"),event.get("userName")).show();
+	    	 chartDialogShow(event.get("fromId"),event.get("from")).show();
 	        }
 	     else{
 	    	 if(chartDialog.isHidden()){
@@ -516,21 +517,69 @@ function onData(event) {
 	     }
 		$("#chart_message").append("<div class='text-success message'><span class='text-info'>【"+event.get("from")+"】说11：</span>"+event.get("message")+"</div>");
 	}
-	if (event.getSubject() == '/user/login'){
-		   var t=new Ext.ToolTip({
-	   		target: 'mainUI',
-	   		dismissDelay: 15000 ,
-	   		html: ']上线了'
-			});
-		   console.log(Ext.ComponentQuery.query("trayclock")[0].getXY());
-		   t.showAt([Ext.ComponentQuery.query("trayclock")[0].getX(),Ext.ComponentQuery.query("trayclock")[0].getY()-60]);
+	if (event.getSubject() == '/user/login'){//监听用户上线，然后群发信息给自己的好友说好友上线了
+		  noticeFriends(event.get('accountID'));
+		  console.log(event.get('accountID'));
 		}
+	
+	if(event.getSubject() == "noticeFriendsOnline"&&isMyFrends(event.get('fromId'))){//通知上线，并且是我的好友
+		  var t=new Ext.ToolTip({
+		   		target: 'mainUI',
+		   		dismissDelay: 15000 ,
+		   		html: ']上线了'
+				});
+		   console.log(Ext.ComponentQuery.query("trayclock")[0].getXY());
+			//通知用户上线
+		   t.showAt([Ext.ComponentQuery.query("trayclock")[0].getX(),Ext.ComponentQuery.query("trayclock")[0].getY()-60]);
+	}
 
 //     离开  
 //     PL.leave();  
 }
 
+function noticeFriends (loginId){//建立通信
+	Ext.Ajax.request({
+		method : 'POST',
+		async: false,
+	    url:  "./chart/notice-friends",
+	    params: {
+	    	//登陆的用户
+	    	loginId:loginId
+	    },
+		success: function(response){
+		
+			if(response.responseText == 1){
+				
+			}
+		},
+		failure : function(response) {
+			
+		}
+	});
+}
 
+//是否是好友
+function isMyFrends(loginId){
+	Ext.Ajax.request({
+		method : 'POST',
+		async: false,
+	    url:  "./chart/is-friends",
+	    params: {
+	    	//登陆的用户
+	    	loginId:loginId
+	    },
+		success: function(response){
+		
+			if(response.responseText == 1){
+				return true;
+			}
+			return false
+		},
+		failure : function(response) {
+			return false
+		}
+	});
+}
 
 function onJoinListenAck(event){//用户登陆上线通知
 	PL.publish('/user/login', 'name=admin&accountID=1' );
