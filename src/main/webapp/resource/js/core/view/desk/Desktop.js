@@ -145,7 +145,7 @@ Ext.define('core.view.desk.Desktop', {
         		console.log(PL.userSession);
 				PL.sessionId = Ext.decode(response.responseText).id;
 				//设置主题  监听用户登陆，用户聊天的
-				PL.joinListen('/pushlet/ping,/user/login,/singleChart,/message/world,/notice/friends,/noticeFriendsOnline');
+				PL.joinListen('/pushlet/ping,/myevent1,/user/login,/singleChart,/message/world,/noticeFriendsOnline');
 ////        		PL.joinListen('/notice/friends');
 				PL.id= Ext.decode(response.responseText).id;
 				PL.userSessionName= Ext.decode(response.responseText).userName;

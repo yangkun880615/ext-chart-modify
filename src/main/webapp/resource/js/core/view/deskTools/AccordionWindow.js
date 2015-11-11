@@ -516,73 +516,70 @@ function onData(event) {
 	    	 }
 	     }
 		$("#chart_message").append("<div class='text-success message'><span class='text-info'>【"+event.get("from")+"】说11：</span>"+event.get("message")+"</div>");
-	}
-	if (event.getSubject() == '/user/login'){//监听用户上线，然后群发信息给自己的好友说好友上线了
-		  noticeFriends(event.get('accountID'));
-		  console.log(event.get('accountID'));
-		}
-	
-	if(event.getSubject() == "noticeFriendsOnline"&&isMyFrends(event.get('fromId'))){//通知上线，并且是我的好友
-		  var t=new Ext.ToolTip({
+	}//用户上线，并且账号id 不是自己，而且是自己的好友 群发
+	if (event.getSubject() == '/user/login'&&(event.get('accountID')!=PL.userSession)&&isMyFrends(event.get('accountID'))){//监听用户上线，然后群发信息给自己的好友说好友上线了
+		console.log(event.get('accountID'),PL.userSession); 
+		var t=new Ext.ToolTip({
 		   		target: 'mainUI',
 		   		dismissDelay: 15000 ,
-		   		html: ']上线了'
+		   		html: PL.userSession+'上线了'
 				});
 		   console.log(Ext.ComponentQuery.query("trayclock")[0].getXY());
 			//通知用户上线
 		   t.showAt([Ext.ComponentQuery.query("trayclock")[0].getX(),Ext.ComponentQuery.query("trayclock")[0].getY()-60]);
-	}
+		}
+	
 
 //     离开  
 //     PL.leave();  
 }
 
-function noticeFriends (loginId){//建立通信
-	Ext.Ajax.request({
-		method : 'POST',
-		async: false,
-	    url:  "./chart/notice-friends",
-	    params: {
-	    	//登陆的用户
-	    	loginId:loginId
-	    },
-		success: function(response){
-		
-			if(response.responseText == 1){
-				
-			}
-		},
-		failure : function(response) {
-			
-		}
-	});
-}
+//function noticeFriends (loginId){//建立通信
+//	Ext.Ajax.request({
+//		method : 'POST',
+//		async: false,
+//	    url:  "./chart/notice-friends",
+//	    params: {
+//	    	//登陆的用户
+//	    	loginId:loginId
+//	    },
+//		success: function(response){
+//		
+//			if(response.responseText == 1){
+//			}
+//		},
+//		failure : function(response) {
+//			
+//		}
+//	});
+//}
 
 //是否是好友
-function isMyFrends(loginId){
-	Ext.Ajax.request({
-		method : 'POST',
-		async: false,
-	    url:  "./chart/is-friends",
-	    params: {
-	    	//登陆的用户
-	    	loginId:loginId
-	    },
-		success: function(response){
-		
-			if(response.responseText == 1){
-				return true;
-			}
-			return false
-		},
-		failure : function(response) {
-			return false
-		}
-	});
-}
+//function isMyFrends(loginId){
+//	return true;
+//	Ext.Ajax.request({
+//		method : 'POST',
+//		async: false,
+//	    url:  "./chart/is-friends",
+//	    params: {
+//	    	//登陆的用户
+//	    	loginId:loginId
+//	    },
+//		success: function(response){
+//		
+//			if(response.responseText == 1){
+//				return true;
+//			}
+//			return false
+//		},
+//		failure : function(response) {
+//			return false
+//		}
+//	});
+//}
 
 function onJoinListenAck(event){//用户登陆上线通知
-	PL.publish('/user/login', 'name=admin&accountID=1' );
+	PL.publish('/user/login', 'name=admin&accountID='+PL.userSession );//accountID 是自己登陆的id
 }
 
 // Pushlet Event Callback from Server
