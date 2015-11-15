@@ -1,19 +1,3 @@
-/**  
-* Project ：              ext-chart-modify  
-* FileName ：           com.chart.cn.web.controller.MyPushlet.java 
-* Description : 
-* Copyright :   Copyright  中国网络电视台 (c) 2015 All Rights reserved.
-* Company :     中国网络电视台
-* @author :     yk 
-* @version:     1.0
-* Create at ：        2015年11月10日 下午7:32:35  
-*
-* Modification History : 
-* Date                    Author       Version         Description
-*------------------------------------------------------
-* 2015年11月10日 下午7:32:35         yk        1.0              
-*/  
-
 package com.chart.cn.web.controller;
 import java.io.IOException;   
 import java.io.UnsupportedEncodingException; 
